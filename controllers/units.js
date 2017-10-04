@@ -4,7 +4,7 @@ var Unit = require('../models/Unit');
 /**
  * POST /signup
  */
-exports.saveUnit = function(req, res, next) {
+exports.createUnit = function(req, res, next) {
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('model', 'Model cannot be blank').notEmpty();
   req.assert('developer', 'Developer cannot be blank').notEmpty();
@@ -49,7 +49,7 @@ exports.saveUnit = function(req, res, next) {
  * PUT /unit
  * Update profile information OR change password.
  */
-exports.unitPut = function(req, res, next) {
+exports.updateUnit = function(req, res, next) {
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('model', 'Model cannot be blank').notEmpty();
   req.assert('developer', 'Developer cannot be blank').notEmpty();
@@ -91,7 +91,7 @@ exports.unitPut = function(req, res, next) {
 /**
  * DELETE /unit
  */
-exports.unitDelete = function(req, res, next) {
+exports.deleteUnit = function(req, res, next) {
   new User({ id: req.user.id }).destroy().then(function(user) {
     res.send({ msg: 'Your unit has been permanently deleted.' });
   });
